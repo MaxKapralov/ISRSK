@@ -23,37 +23,37 @@
 <script type="text/javascript">
 	document.getElementById("addRoom").onclick = function()
 	{
-		location.href = "/Rezerwacja/addRoom";
+		location.href = "/ISRSK/addRoom";
 	};
 	
 	document.getElementById("logout").onclick = function()
 	{
-		location.href = "/Rezerwacja/logout";
+		location.href = "/ISRSK/logout";
 	};
 	
 	document.getElementById("delRoom").onclick = function()
 	{
-		location.href = "/Rezerwacja/delRoom";
+		location.href = "/ISRSK/delRoom";
 	};
 	
 	document.getElementById("myConfirm").onclick = function()
 	{
-		location.href = "/Rezerwacja/myConfirm";
+		location.href = "/ISRSK/myConfirm";
 	};
 	
 	document.getElementById("bookRoom").onclick = function()
 	{
-		location.href = "/Rezerwacja/bookRoom";
+		location.href = "/ISRSK/bookRoom";
 	};
 	
 	document.getElementById("addNewUser").onclick = function()
 	{
-		location.href = "/Rezerwacja/addNewUser";
+		location.href = "/ISRSK/addNewUser";
 	};
 	
 	document.getElementById("userList").onclick = function()
 	{
-		location.href = "/Rezerwacja/userList";
+		location.href = "/ISRSK/userList";
 	};
 </script>
 </html>

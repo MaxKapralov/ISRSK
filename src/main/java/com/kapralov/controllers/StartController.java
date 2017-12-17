@@ -28,13 +28,14 @@ public class StartController {
         return "admin";
     }
      
-    @RequestMapping(value = "/db", method = RequestMethod.GET)
-    public String dbaPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
-        return "dba";
+    @RequestMapping(value="/mainPage", method = RequestMethod.GET)
+    public String mainPage(ModelMap model)
+    {
+    	model.addAttribute("user", getPrincipal());
+    	return "mainPage";
     }
  
-    @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
+    @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
     public String accessDeniedPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
         return "accessDenied";
