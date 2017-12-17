@@ -18,7 +18,7 @@ public class StartController {
      
     @RequestMapping(value = { "/"}, method = RequestMethod.GET)
     public String homePage(ModelMap model) {
-        
+        model.addAttribute("welcome", "Witaj");
         return "welcome";
     }
  
