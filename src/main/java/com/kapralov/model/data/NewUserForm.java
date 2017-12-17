@@ -9,7 +9,9 @@ import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.kapralov.model.validators.PasswordConstraint;
+import com.kapralov.model.validators.PasswordsEqualsConstraint;
 
+@PasswordsEqualsConstraint
 public class NewUserForm {
 
 	@NotNull @Size(min = 1,  max = 20)

@@ -33,6 +33,7 @@
                 <td>Haslo:</td>
                 <td><form:password path="password"/></td>
                 <td><c:if test="${pageContext.request.method=='POST'}"><form:errors path="password" /></c:if></td>
+                
 
             </tr>
             <tr>
