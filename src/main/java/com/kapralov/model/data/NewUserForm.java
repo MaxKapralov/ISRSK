@@ -8,6 +8,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.kapralov.model.validators.PasswordConstraint;
+
 public class NewUserForm {
 
 	@NotNull @Size(min = 1,  max = 20)
@@ -19,10 +21,10 @@ public class NewUserForm {
 	@NotNull @Size(min = 4,  max = 20)
 	private String login;
 	
-	//@PasswordConstraint
+	@PasswordConstraint
 	private String password;
 	
-	//@PasswordConstraint
+	@PasswordConstraint
 	private String passAgain;
 	
 	@Email @NotNull 
