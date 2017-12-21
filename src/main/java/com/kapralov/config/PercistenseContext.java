@@ -30,7 +30,7 @@ public class PercistenseContext {
 	{
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource);
-		em.setPackagesToScan(new String[] {"com.myproject.model"});
+		em.setPackagesToScan(new String[] {"com.kapralov.model"});
 		
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);

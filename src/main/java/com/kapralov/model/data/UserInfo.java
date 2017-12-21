@@ -12,6 +12,7 @@ import javax.persistence.Table;
 public class UserInfo {
 
 	@Id
+	@Column(name = "id_user")
 	private Long id;
 	
 	@Column(name = "name")
