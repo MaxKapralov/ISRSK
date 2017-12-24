@@ -23,9 +23,9 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter{
 	{
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/ISRSK");
+		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/ISRSK?useSSL=false");
 		dataSource.setUsername("root");
-		dataSource.setPassword("admin");		
+		dataSource.setPassword("LetMeDie");		
 		return dataSource;
 	}
 	

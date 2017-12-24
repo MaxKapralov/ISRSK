@@ -1,19 +1,23 @@
 package com.kapralov.controllers;
 
 
-import java.util.Date;
-import java.util.List;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.Map;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kapralov.model.data.NewUserForm;
 import com.kapralov.model.data.User;
@@ -53,5 +57,28 @@ public class RegisterController {
     public String result()
     {
     	return "result";
+    }
+    
+    @RequestMapping(value="/loginIsUnique")
+    public String checkEmail(@RequestParam("email") String email)
+    {
+    	UserInfo user = userInfoRep.findByEmail(email);
+    	JsonObjectBuilder jsonBuilder = Json.createObjectBuilder();
+    	if(user == null)
+    		jsonBuilder.add("isUnique", "true");
+    	else
+    		jsonBuilder.add("isUnique", "false");
+    	JsonObject jsonObject = jsonBuilder.build();
+    	String jsonString = null;
+    	try(Writer writer = new StringWriter())
+    	{
+    		Json.createWriter(writer).write(jsonObject);
+    		jsonString = writer.toString();
+    	}
+    	catch(IOException e)
+    	{
+    		System.exit(1);
+    	}
+    	return jsonString;
     }
 }

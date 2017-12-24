@@ -23,7 +23,7 @@
 <script type="text/javascript">
 	document.getElementById("addRoom").onclick = function()
 	{
-		location.href = "/ISRSK/addRoom";
+		location.href = "/ISRSK/admin/addRoom";
 	};
 	
 	document.getElementById("logout").onclick = function()
@@ -33,12 +33,12 @@
 	
 	document.getElementById("delRoom").onclick = function()
 	{
-		location.href = "/ISRSK/delRoom";
+		location.href = "/ISRSK/admin/delRoom";
 	};
 	
 	document.getElementById("myConfirm").onclick = function()
 	{
-		location.href = "/ISRSK/myConfirm";
+		location.href = "/ISRSK/admin/myConfirm";
 	};
 	
 	document.getElementById("bookRoom").onclick = function()
@@ -48,12 +48,12 @@
 	
 	document.getElementById("addNewUser").onclick = function()
 	{
-		location.href = "/ISRSK/addNewUser";
+		location.href = "/ISRSK/admin/addNewUser";
 	};
 	
 	document.getElementById("userList").onclick = function()
 	{
-		location.href = "/ISRSK/userList";
+		location.href = "/ISRSK/admin/userList";
 	};
 </script>
 </html>

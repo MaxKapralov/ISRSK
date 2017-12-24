@@ -8,5 +8,5 @@ import com.kapralov.model.data.UserInfo;
 public interface UserInfoRepository extends CrudRepository<UserInfo, Long>{
 
 	UserInfo save(UserInfo entity);
-	
+	UserInfo findByEmail(String email);
 }
