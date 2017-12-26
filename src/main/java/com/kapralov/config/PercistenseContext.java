@@ -60,7 +60,7 @@ public class PercistenseContext {
 	Properties additionalProperties()
 	{
 		Properties prop = new Properties();
-		prop.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+		prop.setProperty("hibernate.hbm2ddl.auto", "update");
 		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 			
 		return prop;

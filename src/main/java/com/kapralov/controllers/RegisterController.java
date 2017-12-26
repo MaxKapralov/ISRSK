@@ -59,7 +59,7 @@ public class RegisterController {
     	return "result";
     }
     
-    @RequestMapping(value="/loginIsUnique")
+    @RequestMapping(value="/emailIsUnique")
     public String checkEmail(@RequestParam("email") String email)
     {
     	UserInfo user = userInfoRep.findByEmail(email);
@@ -81,4 +81,29 @@ public class RegisterController {
     	}
     	return jsonString;
     }
+    
+    
+    @RequestMapping(value="/loginIsUnique")
+    public String checkLogin(@RequestParam("login") String login)
+    {
+    	User user = repository.findByLogin(login);
+    	JsonObjectBuilder jsonBuilder = Json.createObjectBuilder();
+    	if(user == null)
+    		jsonBuilder.add("isUnique", "true");
+    	else
+    		jsonBuilder.add("isUnique", "false");
+    	JsonObject jsonObject = jsonBuilder.build();
+    	String jsonString = null;
+    	try(Writer writer = new StringWriter())
+    	{
+    		Json.createWriter(writer).write(jsonObject);
+    		jsonString = writer.toString();
+    	}
+    	catch(IOException e)
+    	{
+    		System.exit(1);
+    	}
+    	return jsonString;
+    }
+    
 }
