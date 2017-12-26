@@ -20,15 +20,13 @@
             <tr>
                 <td>Lokalizacja:</td>
                 <td><form:input path="location"/></td>
-                <td><form:errors path="location"/></td>
             </tr>
             <tr>
                 <td>Potwierdzenie:</td>
                 <td><form:select path="permission">
                 	<form:option value="true" label="Tak"/>
                 	<form:option value="false" label="Nie"/>
-                </form:select></td>
-                <td><form:errors path="permission"/></td>
+                </form:select></td>           
             </tr>
             <tr><td><input type="submit" value="Dodaj"/></td></tr>
 		</table>
