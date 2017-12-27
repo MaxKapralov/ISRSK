@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,10 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kapralov.model.data.NewRoom;
+import com.kapralov.model.repository.NewRoomRepository;
 
 @Controller
 public class AdminPageController {
 
+	@Autowired
+	NewRoomRepository newRoomRep;
+	
 	@RequestMapping(value="/admin/addRoom", method = RequestMethod.GET)
 	public String addRoomPage(Map<String, Object> model)
 	{
@@ -28,8 +33,18 @@ public class AdminPageController {
 	public String addNewRoom(@ModelAttribute("newRoom") @Valid NewRoom room, BindingResult result)
 	{
 		if(result.hasErrors())
+
 			return "redirect:/admin/addRoom?error=true";
+		if(newRoomRep.findByLocation(room.getLocation()) != null)
+			return "redirect:/admin/addRoom?exists=true";
+		newRoomRep.save(room);
 		return "redirect:/admin/addRoom?success=true";
 	}
+	
+/*	@RequestMapping(value="admin/delRoom", method = RequestMethod.POST)
+	public String deleteRoom(Map<String, Object> model)
+	{
+		
+	}*/
 	
 }

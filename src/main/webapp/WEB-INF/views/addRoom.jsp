@@ -15,6 +15,9 @@
 	<c:if test="${param.success != null}">
 		<p>Dodano sale</p>
 	</c:if>
+	<c:if test="${param.exists != null}">
+		<p>Sala o takiej lokalizacji juz istnieje</p>
+	</c:if>
 	<form:form action="addNewRoom" method="post" modelAttribute="newRoom">
 		<table>
             <tr>

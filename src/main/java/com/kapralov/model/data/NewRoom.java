@@ -18,7 +18,6 @@ public class NewRoom {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id_room", nullable = false)
-	@NotNull
 	private Long id;
 	
 	@NotNull @Size(min = 1, max = 5)
