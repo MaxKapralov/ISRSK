@@ -15,9 +15,20 @@
 	<p>Nie znaleziono sali w bazie!</p>
 </c:if>
 	<p>Lista sal:</p>
-	<c:forEach var="room" items="${listOfRooms}">
-		<p onclick="delRoom(${room.id})"><c:out value="${room.location}" /></p>
-	</c:forEach>
+	<table>
+		<tr>
+			<td>Numer Sali</td>
+			<td>Potwierdzenie</td>
+			<td></td>
+		</tr>		
+		<c:forEach var="room" items="${listOfRooms}">
+			<tr>
+				<td><c:out value="${room.location}"/></td>
+				<td>${room.permission}</td>
+				<td><button onclick="delRoom(${room.id})">Usun</button></td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 <script>
 	function delRoom(id)

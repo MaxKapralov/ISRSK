@@ -13,13 +13,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kapralov.model.data.NewRoom;
+import com.kapralov.model.data.UserInfo;
 import com.kapralov.model.repository.NewRoomRepository;
+import com.kapralov.model.repository.UserInfoRepository;
 
 @Controller
 public class AdminPageController {
 
 	@Autowired
 	NewRoomRepository newRoomRep;
+	
+	@Autowired 
+	UserInfoRepository userInfoRep;
 	
 	@RequestMapping(value="/admin/addRoom", method = RequestMethod.GET)
 	public String addRoomPage(Map<String, Object> model)
@@ -59,6 +64,14 @@ public class AdminPageController {
 			return "redirect:/admin/delRoom?deleted=true";
 		}
 		return "redirect:/admin/delRoom?deleted=false";
+	}
+	
+	@RequestMapping(value = "/admin/userList", method = RequestMethod.GET)
+	public String userList(Map<String, Object> model)
+	{
+		Iterable<UserInfo> list = userInfoRep.findAll();
+		model.put("listOfUsers", list);
+		return "userList";
 	}
 	
 }

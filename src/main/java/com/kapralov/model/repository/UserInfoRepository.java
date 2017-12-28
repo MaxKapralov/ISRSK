@@ -12,4 +12,5 @@ public interface UserInfoRepository extends CrudRepository<UserInfo, Long>{
 	UserInfo save(UserInfo entity);
 	UserInfo findByEmail(String email);
 	UserInfo findById(Long id);
+
 }
