@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kapralov.model.data.NewRoom;
 import com.kapralov.model.repository.NewRoomRepository;
@@ -41,10 +42,23 @@ public class AdminPageController {
 		return "redirect:/admin/addRoom?success=true";
 	}
 	
-/*	@RequestMapping(value="admin/delRoom", method = RequestMethod.POST)
+	@RequestMapping(value="/admin/delRoom", method = RequestMethod.GET)
 	public String deleteRoom(Map<String, Object> model)
 	{
-		
-	}*/
+		Iterable<NewRoom> list = newRoomRep.findAll();
+		model.put("listOfRooms", list);
+		return "deleteRoom";
+	}
+	
+	@RequestMapping(value="/admin/delRoomWithId", method = RequestMethod.GET)
+	public String deleteRoomWithId(@RequestParam("id") Long id)
+	{
+		if(newRoomRep.findById(id) != null)
+		{
+			newRoomRep.delete(id);
+			return "redirect:/admin/delRoom?deleted=true";
+		}
+		return "redirect:/admin/delRoom?deleted=false";
+	}
 	
 }

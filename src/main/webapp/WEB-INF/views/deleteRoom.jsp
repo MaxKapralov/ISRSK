@@ -8,9 +8,21 @@
 <title>Usun Sale</title>
 </head>
 <body>
+<c:if test="${param.deleted == true}">
+	<p>Usuneto sale</p>
+</c:if>
+<c:if test="${param.deleted == false}">
+	<p>Nie znaleziono sali w bazie!</p>
+</c:if>
 	<p>Lista sal:</p>
 	<c:forEach var="room" items="${listOfRooms}">
-		<p><c:out value="${room}"/></p>
+		<p onclick="delRoom(${room.id})"><c:out value="${room.location}" /></p>
 	</c:forEach>
 </body>
+<script>
+	function delRoom(id)
+	{
+		location.href("/ISRSK/admin/delRoomWithId?id=" + id);
+	}
+</script>
 </html>

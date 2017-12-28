@@ -11,4 +11,5 @@ public interface NewRoomRepository extends CrudRepository<NewRoom, Long>{
 	NewRoom save(NewRoom room);
 	Iterable<NewRoom> findAll();
 	NewRoom findByLocation(String location);
+	NewRoom findById(Long id);
 }
