@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kapralov.model.data.NewRoom;
+import com.kapralov.model.data.NewUserForm;
+import com.kapralov.model.data.User;
 import com.kapralov.model.data.UserInfo;
 import com.kapralov.model.repository.NewRoomRepository;
 import com.kapralov.model.repository.UserInfoRepository;
+import com.kapralov.model.repository.UserRepository;
 
 @Controller
 public class AdminPageController {
@@ -25,6 +28,9 @@ public class AdminPageController {
 	
 	@Autowired 
 	UserInfoRepository userInfoRep;
+	
+	@Autowired
+	UserRepository userRep;
 	
 	@RequestMapping(value="/admin/addRoom", method = RequestMethod.GET)
 	public String addRoomPage(Map<String, Object> model)
@@ -72,6 +78,22 @@ public class AdminPageController {
 		Iterable<UserInfo> list = userInfoRep.findAll();
 		model.put("listOfUsers", list);
 		return "userList";
+	}
+	@RequestMapping(value="/admin/addNewUser", method = RequestMethod.GET)
+	public String addUser(Map<String, Object> model)
+	{
+		NewUserForm newUser = new NewUserForm();
+		model.put("newUserForm", newUser);
+		return "addNewUser";
+	}
+	@RequestMapping(value = "/admin/addNewUser", method = RequestMethod.POST)
+	public String addNewUser(@ModelAttribute("newUserForm") @Valid NewUserForm user, BindingResult result, Map<String, Object> model)
+	{
+		if(result.hasErrors())
+			return "/admin/addNewUser";
+		User newUser = userRep.save(new User(user.getLogin(), user.getPassword()));
+		userInfoRep.save(new UserInfo(newUser.getId(), user.getName(), user.getSurname(), user.getEmail(), user.getBirthday(), user.getRole()));
+		return "redirect:/admin/addNewUser?success=true";
 	}
 	
 }

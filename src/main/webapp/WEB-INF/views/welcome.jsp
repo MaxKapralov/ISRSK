@@ -8,5 +8,18 @@
 </head>
 <body>
 	<p>${welcome}<p>
+	<p><button id="registerButton">Rejestracja</button></p>
+	<p><button id="logInButton">Zaloguj sie</button></p>
 </body>
+<script>
+	document.getElementById("registerButton").onclick = function()
+	{
+		location.href = "/ISRSK/register";
+	};
+	
+	document.getElementById("logInButton").onclick = function()
+	{
+		location.href = "/ISRSK/login";
+	};
+</script>
 </html>

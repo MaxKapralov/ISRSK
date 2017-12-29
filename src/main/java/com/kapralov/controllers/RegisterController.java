@@ -49,8 +49,8 @@ public class RegisterController {
         if(result.hasErrors())
             return "register";
         User newUser = repository.save(new User(user.getLogin(), user.getPassword()));
-        userInfoRep.save(new UserInfo(newUser.getId(), user.getName(), user.getSurname(), user.getEmail(), user.getBirthday(), "ROLE_USER"));
-        return "redirect:/result";
+        userInfoRep.save(new UserInfo(newUser.getId(), user.getName(), user.getSurname(), user.getEmail(), user.getBirthday(), user.getRole()));
+        return "redirect:/register?success=true";
     }
     
     @RequestMapping(value="/result", method=RequestMethod.GET)
