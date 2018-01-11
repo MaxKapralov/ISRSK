@@ -1,7 +1,19 @@
 package com.kapralov.controllers;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +26,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kapralov.model.data.NewRoom;
 import com.kapralov.model.data.NewUserForm;
+import com.kapralov.model.data.RoomBook;
 import com.kapralov.model.data.User;
 import com.kapralov.model.data.UserInfo;
 import com.kapralov.model.repository.NewRoomRepository;
+import com.kapralov.model.repository.RoomBookRepository;
 import com.kapralov.model.repository.UserInfoRepository;
 import com.kapralov.model.repository.UserRepository;
 
@@ -31,6 +45,9 @@ public class AdminPageController {
 	
 	@Autowired
 	UserRepository userRep;
+	
+	@Autowired
+	RoomBookRepository roomBookRep;
 	
 	@RequestMapping(value="/admin/addRoom", method = RequestMethod.GET)
 	public String addRoomPage(Map<String, Object> model)
@@ -96,4 +113,20 @@ public class AdminPageController {
 		return "redirect:/admin/addNewUser?success=true";
 	}
 	
-}
+	@RequestMapping(value = "/admin/bookRoom", method = RequestMethod.GET)
+	public String bookRoomPage(Map<String, Object> model)
+	{
+		Iterable<NewRoom> list = newRoomRep.findAll();
+		model.put("list", list);
+		return "bookRoom";
+	}
+	
+	@RequestMapping(value="/admin/bookRoomWithId", method = RequestMethod.GET)
+	public String bookRoomWithId(@RequestParam("id") Long id, Map<String, Object> model)
+	{
+		NewRoom room = newRoomRep.findById(id);
+		model.put("room", room);
+		return "bookRoomWithId";
+	}
+}	
+	

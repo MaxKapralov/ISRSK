@@ -37,10 +37,10 @@
             </tr>
             <tr>
                 <td>Email:</td>
-                <td><form:input path="email"/></td>
+                <td><form:input type="email" path="email"/></td>
             </tr>
             <tr>
-                <td>Data urodzenia(dd.mm.yyyy):</td>
+                <td>Data urodzenia(MM-dd-yyyy):</td>
                 <td><form:input path="birthday"/></td>
             </tr>
             <tr>

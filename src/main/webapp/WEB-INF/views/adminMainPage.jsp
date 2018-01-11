@@ -43,7 +43,7 @@
 	
 	document.getElementById("bookRoom").onclick = function()
 	{
-		location.href = "/ISRSK/bookRoom";
+		location.href = "/ISRSK/admin/bookRoom";
 	};
 	
 	document.getElementById("addNewUser").onclick = function()

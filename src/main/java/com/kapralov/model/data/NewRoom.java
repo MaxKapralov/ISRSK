@@ -26,7 +26,7 @@ public class NewRoom {
 	@NotNull
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private boolean permission;
-	
+		
 	public NewRoom() {}
 	
 	public NewRoom(String location, boolean permission)

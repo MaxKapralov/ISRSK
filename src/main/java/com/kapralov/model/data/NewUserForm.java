@@ -32,7 +32,7 @@ public class NewUserForm {
 	@Email @NotNull 
 	private String email;
 	
-	@DateTimeFormat(pattern = "dd.MM.YYYY")
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private Date birthday;
 	
 	@NotNull
